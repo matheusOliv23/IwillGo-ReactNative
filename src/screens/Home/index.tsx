@@ -70,8 +70,7 @@ export function Home() {
         renderItem={renderItem}
         ListEmptyComponent={() => (
           <Text style={styles.listEmptyText}>
-            Ninguém chegou no evento? Adicione participantes a sua lista de
-            presença.
+            Adicione participantes a sua lista de presença.
           </Text>
         )}
         showsVerticalScrollIndicator={false}
