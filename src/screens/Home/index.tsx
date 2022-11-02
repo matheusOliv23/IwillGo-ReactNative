@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Alert,
   Text,
   View,
   TextInput,
@@ -22,18 +23,30 @@ export function Home() {
   ];
 
   function handleParticipantAdd() {
-    console.log("clicou em adicionar");
+    if (participants.includes("Matheus")) {
+      return Alert.alert(
+        "Participante existe",
+        "Ja existe um participante na lista com esse nome"
+      );
+    }
   }
   function handleParticipantRemove(name: string) {
+    Alert.alert("Remover", `Remover o participante ${name}?`, [
+      {
+        text: "Sim",
+        onPress: () => Alert.alert("Participante removido"),
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
     console.log(`clicou em remover ${name}`);
   }
 
   const renderItem = ({ item }: { item: string }) => {
     return (
-      <Participant
-        onRemove={() => handleParticipantRemove("Matheus")}
-        name={item}
-      />
+      <Participant onRemove={() => handleParticipantRemove(item)} name={item} />
     );
   };
 
